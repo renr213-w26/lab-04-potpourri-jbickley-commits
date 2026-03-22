@@ -293,16 +293,12 @@ Tip
 <p>How does the improved visualization look different than the original? Does it send a different message at a first glance?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>survation_pct <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">service =</span> <span class="fu">factor</span>(service, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Rail"</span>, <span class="st">"Water"</span>, <span class="st">"Energy"</span>, <span class="st">"Royal Mail"</span>))) <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(percent, service, <span class="at">fill =</span> response ))<span class="sc">+</span> <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Public sector"</span> <span class="ot">=</span> <span class="st">"#0B78A5"</span>,</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Private sector"</span> <span class="ot">=</span> <span class="st">"#F05A28"</span>,</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Don't know"</span> <span class="ot">=</span> <span class="st">"gray60"</span>))<span class="sc">+</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span>)<span class="sc">+</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Do you think the following services should be run in the private</span><span class="sc">\n</span><span class="st">sector or the public sector?"</span>,</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Base: All Respondents Unweighted Total: 1858"</span>,</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">""</span>,</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">y=</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Public sector"</span> <span class="ot">=</span> <span class="st">"#0B78A5"</span>, <span class="st">"Private sector"</span> <span class="ot">=</span> <span class="st">"#F05A28"</span>, <span class="st">"Don't know"</span> <span class="ot">=</span> <span class="st">"gray60"</span>))<span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)<span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Do you Think the Following Services Should be Run in the </span><span class="sc">\n</span><span class="st">Private Sector or the Public Sector?"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="at">caption =</span> <span class="st">"All Respondents Unweighted Total = 1858"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">""</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">y=</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -360,7 +356,8 @@ Note
 </div>
 <p>Here is a peek at the top 10 rows of the dataset:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>datasaurus_dozen</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>datasaurus_dozen <span class="ot">=</span> datasaurus_dozen</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>datasaurus_dozen</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,846 × 3
    dataset     x     y
@@ -394,10 +391,46 @@ Tip
 <p>There are 13 groups but <code>tibble</code>s only print out 10 rows by default. Add <code>print(n = 13)</code> as the last step of your pipeline to display all rows.</p>
 </div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>datasaurus_dozen <span class="sc">|&gt;</span> <span class="fu">group_by</span>(dataset) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">mean_x =</span> <span class="fu">mean</span>(x), <span class="at">mean_y =</span> <span class="fu">mean</span>(y), <span class="at">std_x =</span> <span class="fu">sd</span>(x), <span class="at">std_y =</span> <span class="fu">sd</span>(y), <span class="at">correlation =</span> <span class="fu">cor</span>(x,y)) <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">13</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 13 × 6
+   dataset    mean_x mean_y std_x std_y correlation
+   &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;
+ 1 away         54.3   47.8  16.8  26.9     -0.0641
+ 2 bullseye     54.3   47.8  16.8  26.9     -0.0686
+ 3 circle       54.3   47.8  16.8  26.9     -0.0683
+ 4 dino         54.3   47.8  16.8  26.9     -0.0645
+ 5 dots         54.3   47.8  16.8  26.9     -0.0603
+ 6 h_lines      54.3   47.8  16.8  26.9     -0.0617
+ 7 high_lines   54.3   47.8  16.8  26.9     -0.0685
+ 8 slant_down   54.3   47.8  16.8  26.9     -0.0690
+ 9 slant_up     54.3   47.8  16.8  26.9     -0.0686
+10 star         54.3   47.8  16.8  26.9     -0.0630
+11 v_lines      54.3   47.8  16.8  26.9     -0.0694
+12 wide_lines   54.3   47.8  16.8  26.9     -0.0666
+13 x_shape      54.3   47.8  16.8  26.9     -0.0656</code></pre>
+</div>
+</div>
+<p>Across all of the summary statistics, the data sets are extremely similar between each other the means, standard deviations,9 and correlations are all within margin of error across data sets.</p>
 </section>
 <section id="question-7" class="level2">
 <h2 class="anchored" data-anchor-id="question-7">Question 7</h2>
 <p>Create a scatterplot of <code>y</code> versus <code>x</code> and color and facet it by <code>dataset</code>. Then, in 1-2 sentences, how these plots compare across groups (datasets). How does your response in this question compare to your response to the previous question and what does this say about using visualizations and summary statistics when getting to know a dataset?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>datasaurus_dozen <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x,y, <span class="at">color =</span> dataset)) <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>)<span class="sc">+</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>dataset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab-4_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Though all the data sets have very similar summary statistics, they are clearly completely different and the distribution of the data is not very similar at all. It highlights how looking at summary statistics can be misleading and why investigating data further is necessary.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">

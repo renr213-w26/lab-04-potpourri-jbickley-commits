@@ -197,14 +197,10 @@ How does the improved visualization look different than the original? Does it se
 ```{r}
 
 survation_pct |> mutate(service = factor(service, levels = c("Rail", "Water", "Energy", "Royal Mail"))) |> ggplot(aes(percent, service, fill = response ))+ geom_col() +
-scale_fill_manual(values = c("Public sector" = "#0B78A5",
-      "Private sector" = "#F05A28",
-      "Don't know" = "gray60"))+
-  theme(
-    legend.position = "bottom")+
-  labs(
-    title = "Do you think the following services should be run in the private\nsector or the public sector?",
-    caption = "Base: All Respondents Unweighted Total: 1858",
+scale_fill_manual(values = c("Public sector" = "#0B78A5", "Private sector" = "#F05A28", "Don't know" = "gray60"))+
+theme(legend.position = "bottom")+
+labs(title = "Do you Think the Following Services Should be Run in the \nPrivate Sector or the Public Sector?",
+caption = "All Respondents Unweighted Total = 1858",
   x = "",
   y= "")
 ```
@@ -238,6 +234,7 @@ Here is a peek at the top 10 rows of the dataset:
 ```{r}
 #| eval: true
 
+datasaurus_dozen = datasaurus_dozen
 datasaurus_dozen
 ```
 
@@ -249,9 +246,26 @@ In a single pipeline, calculate the mean of `x`, mean of `y`, standard deviation
 There are 13 groups but `tibble`s only print out 10 rows by default. Add `print(n = 13)` as the last step of your pipeline to display all rows.
 :::
 
+```{r}
+datasaurus_dozen |> group_by(dataset) |> summarise(mean_x = mean(x), mean_y = mean(y), std_x = sd(x), std_y = sd(y), correlation = cor(x,y)) |> print(n = 13)
+```
+
+Across all of the summary statistics, the data sets are extremely similar between each other the means, standard deviations,9 and correlations are all within margin of error across data sets.
+
 ## Question 7
 
 Create a scatterplot of `y` versus `x` and color and facet it by `dataset`. Then, in 1-2 sentences, how these plots compare across groups (datasets). How does your response in this question compare to your response to the previous question and what does this say about using visualizations and summary statistics when getting to know a dataset?
+
+```{r}
+datasaurus_dozen |> 
+  ggplot(aes(x,y, color = dataset)) +
+  geom_point(show.legend = FALSE)+
+  facet_wrap(~dataset)
+  
+
+```
+
+Though all the data sets have very similar summary statistics, they are clearly completely different and the distribution of the data is not very similar at all. It highlights how looking at summary statistics can be misleading and why investigating data further is necessary.
 
 ::: callout-tip
 When you both color and facet by the same variable, you'll end up with a redundant legend. Turn off the legend by adding `show.legend = FALSE` to the geom creating the legend.
