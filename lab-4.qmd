@@ -21,36 +21,56 @@ In this lab you'll review and get practice with a variety of concepts, methods, 
 
 a.  Add each of strings below to the code chunk provided in your document, render the document, and determine if the string is a proper code chunk label. If not, explain why and describe how you could fix it so the document renders.
 
-    -   Chunk label 1:
+```{r}
+#| label: areaaaaaaaaaaaaaaaaaaaaaallllllllllllllllllyyyyylooooooooooooooooooonglabel 
 
-    ```         
-    #| label: a-label 
-    #| with-a-line-break
-    ```
 
-    -   Chunk label 2:
+library(tidyverse)
 
-    ```         
-    #| label: areaaaaaaaaaaaaaaaaaaaaaallllllllllllllllllyyyyylooooooooooooooooooonglabel 
-    ```
+```
 
-    -   Chunk label 3:
+````         
+-   Chunk label 1:
 
-    ```         
-    #| label: label with spaces
-    ```
+```         
+#| label: a-label 
+#| with-a-line-break
+```
 
-    -   Chunk label 4:
+-   Chunk label 2:
 
-    ```         
-    #| label: label-with-dashes
-    ```
+```         
+#| label: areaaaaaaaaaaaaaaaaaaaaaallllllllllllllllllyyyyylooooooooooooooooooonglabel 
+```
 
-    ::: callout-tip
-    Try each label option in the code chunk provided in your document. If it gives you an error (document doesn't render), you know it's not a proper chunk label.
-    :::
+-   Chunk label 3:
+
+```         
+#| label: label with spaces
+```
+
+-   Chunk label 4:
+
+```         
+#| label: label-with-dashes
+```
+
+::: callout-tip
+Try each label option in the code chunk provided in your document. If it gives you an error (document doesn't render), you know it's not a proper chunk label.
+:::
+````
+
+Chunk Label 1: This is not a proper chunk label and will cause an error in rendering, you cannot add a line break as it sees that as a separate instruction. It could be; #\| label: a-label-with-a-line-break to correct it.
+
+Chunk Label 2: This label is correct, however, not best practice because it is so long and is just not very practical as a label. They could rename to something like #\| label: a-really-long-label
+
+Chunk Label 3: This label will produce an error because of the spaces. It should be re-written as #\| label: label-with-spaces
+
+Chunk Label 4: This label is both usable and practical. It uses dashes and does render properly.
 
 b.  Which of the chunk label options above is the best option? Explain your reasoning in 1-2 sentences.
+
+Chunk Label 4 is the clear winner, it is easily readable and concise and it will render. It follows the recommended practices.
 
 ## Question 2
 
@@ -58,8 +78,8 @@ You have the following code chunk:
 
 ```{r}
 #| eval: false
-    
-ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm)) + 
+penguins = penguins    
+ggplot(penguins, aes(x = bill_len, y = bill_dep)) + 
   geom_point()
 ```
 
@@ -69,25 +89,36 @@ Add the following code chunk options, one at a time, and set each to `false` and
 -   `warning`
 -   `eval`
 
+Echo controls if the code chunk is actually shown in the code document, if its set to false the code won't be shown in the rendered document but the output still is.
+
+Warning controls if the warnings show up in the rendered output. This chunk produces a warning that a couple rows are removed for missing or out of range values, if Warning was set to false it would be hidden in the output.
+
+eval controls if the code even runs at all. If it is set to false you can still see the code (as long as echo is not false) but it does not actually run.
+
 ## Question 3
 
 a.  You have the following code chunk again.
 
     ```{r}
-    #| eval: false
-
-    ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm)) + 
+    #| eval: true
+    #| fig-width: 7
+    #| fig-asp: 0.6
+    ggplot(penguins, aes(x = bill_len, y = bill_dep)) + 
       geom_point()
     ```
 
     Add `fig-width` and `fig-asp` as code chunk options. Try setting `fig-width` to values between 1 and 10. Try setting `fig-asp` to values between 0.1 and 1. Re-render the document after each value and observe its effect. Ultimately, choose values that make the plot look visually pleasing in the rendered document. Based on the behavior you observe, describe what each chunk option does.
 
-b.  You have the following code chunk, but look carefully, it's not exactly the same!
+Fig-width sets the width of the graph output, with higher numbers resulting in larger widths.
+
+Fig-asp sets the length of the graph output, however not directly, it sets using a ratio of fig-width so if it were 0.5 the height would be half of the length
+
+a.  You have the following code chunk, but look carefully, it's not exactly the same!
 
     ```{r}
     #| eval: false
-
-    gplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm)) + 
+    #| error: false
+    gplot(penguins, aes(x = bill_len, y = bill_dep)) + 
       geom_point()
     ```
 
@@ -177,10 +208,7 @@ When you both color and facet by the same variable, you'll end up with a redunda
 
 ::: render-commit-push
 Render, commit, and push one last time. Make sure that you commit and push all changed documents and your Git pane is completely empty before proceeding.
-
-
 :::
-
 
 ## Grading
 
